@@ -1,0 +1,28 @@
+<h1>Editing Book</h1>
+
+<% if @error_messages.present? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@error_messages.count, "error") %> prohibited this book from being saved:</h3>
+    <ul>
+      <% @error_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @book do |f| %>
+
+  <p>Title</p>
+  <%= f.text_field :title %>
+
+  <p>Body</p>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Update Book' %>
+
+<% end %>
+
+  <a class="show_id" href="/books/<%= @book.id %>">Show</a>
+  |
+  <a class="back" href="/books">Back</a>
